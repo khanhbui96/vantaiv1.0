@@ -44,7 +44,9 @@ const CreateCommand = (props) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          boxSizing: "border-box",
+          padding: 20
         }}
       >
         <Typography align="center" variant="h5" style={{margin: 10}} >LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>

@@ -59,8 +59,10 @@ export default function Register(props) {
     });
   };
   const handleClick = () =>{
-    console.log({...state})
-    registerUser({...state}, ()=>history.push('/'))
+    registerUser({...state}, ()=>{
+      history.push('/');
+      getErrs({});
+    })
   }
   const handleOnChange = e =>{
       setState({

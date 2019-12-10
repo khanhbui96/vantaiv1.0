@@ -189,6 +189,29 @@ const currencies1 = [
         label: 'Bậc 10',
       }
   ];
+  const currencies6 = [
+    {
+        value: '',
+        label: '',
+      },
+    {
+      value: 'Đại học',
+      label: 'Đại học',
+    },
+    {
+      value: 'Cao đẳng',
+      label: 'Cao đẳng',
+    },
+    {
+        value: 'Trung cấp',
+        label: 'Trung cấp',
+      },
+      {
+        value: 'Sơ cấp',
+        label: 'Sơ cấp',
+      }
+  
+  ];
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
@@ -409,7 +432,7 @@ function CreateProfile(props) {
                                                 select
                                                 label="Bậc lương"
                                                 style={{ width: "100%", marginBottom: 24 }}
-                                                value={data.rank}
+                                                value={data.salary}
                                                 onChange={handleChangeSelect('salary')}
                                                 SelectProps={{
                                                     native: true,
@@ -430,7 +453,7 @@ function CreateProfile(props) {
                                                 style={{ width: "100%", marginBottom: 24 }}
                                                 label="Năm nhận"
                                                 name='salaryReceive'
-                                                value={data.dateReceive}
+                                                value={data.salaryReceive}
                                                 onChange={handleChange}
                                                 error = {errs.dateReceive ? true : false}
                                                 helperText={errs.dateReceive ? errs.dateReceive : ''}
@@ -485,6 +508,27 @@ function CreateProfile(props) {
                                         <ListItem style={{display: 'flex', flexDirection: 'column'}}>
                                         <TextField
                                                 select
+                                                label="Trình độ"
+                                                style={{ width: "100%", marginBottom: 24 }}
+                                                value={data.academic}
+                                                onChange={handleChangeSelect('academic')}
+                                                SelectProps={{
+                                                    native: true,
+                                                    MenuProps: {
+                                                        className: classes.menu,
+                                                    },
+                                                }}
+                                                error = {errs.degree ? true : false}
+                                                helperText={errs.degree ? errs.degree : ''}
+                                            >
+                                                {currencies6.map(option => (
+                                                    <option key={option.value} value={option.value}>
+                                                        {option.label}
+                                                    </option>
+                                                ))}
+                                            </TextField>
+                                        <TextField
+                                                select
                                                 label="Bậc kĩ thuật"
                                                 style={{ width: "100%", marginBottom: 24 }}
                                                 value={data.degree}
@@ -513,7 +557,12 @@ function CreateProfile(props) {
                                                 error = {errs.dateReceive ? true : false}
                                                 helperText={errs.dateReceive ? errs.dateReceive : ''}
                                             />
-                                            <TextField
+                                            
+                                        </ListItem>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <ListItem>
+                                    <TextField
                                             style={{ width: "100%", marginBottom: 24 }}
                                             label="Thông tin thêm"
                                             name='uses'
@@ -555,6 +604,7 @@ function CreateProfile(props) {
                                         rank: "",
                                         salary: "",
                                         position:"",
+                                        academic:'',
                                         salaryReceive: '',
                                         unit: "",
                                         registArea: "",

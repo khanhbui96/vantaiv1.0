@@ -16,8 +16,10 @@ const UpdateVerify = (props)=>{
     })
   }
   const handleClick = (e)=>{
-    updateVehicle(data._id, data)
-    handleClose()
+    updateVehicle(data._id, data, ()=>{ 
+      handleClose()
+    })
+   
   }
     return  (
 
@@ -30,15 +32,12 @@ const UpdateVerify = (props)=>{
           label="Nhãn xe chuyên dùng"
           name="owned"
           value={data.brand}
-          onChange={()=>{
-          }}
         />
         <TextField
           style={{ width: '100%', marginBottom: 24 }}
           label="Số đăng kí"
           name="owned"
           value={data.number}
-          // onChange={handleChange}
         />
         <TextField
           style={{ marginTop: 20 }}

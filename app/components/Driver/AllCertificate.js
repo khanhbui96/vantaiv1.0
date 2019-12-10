@@ -387,7 +387,7 @@ const filterDrivers = (drivers)=>{
           variant="h4"
         >
           {' '}
-          Lí lịch phương tiện{' '}
+          Giấy phép lái xe{' '}
         </Typography>{' '}
         <div>
           <TextField

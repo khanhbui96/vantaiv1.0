@@ -13,10 +13,9 @@ const mapStateToProps = state=>{
 };
 
 const VehicleVerifyPage = (props)=>{
-  const {getAllCommand, getAll, vehicles} = props;
+  const {getAll, vehicles} = props;
   useEffect(()=>{
-    getAllCommand();
-    getAll()
+    getAll();
   },[]);
     return(
         <Wrapper>

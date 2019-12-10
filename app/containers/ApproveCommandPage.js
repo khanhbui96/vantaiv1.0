@@ -11,10 +11,6 @@ const mapStateToProps = state=>{
   }
 }
 const ApproveCommandPage = (props)=>{
-  const {getAllCommand, commands} = props;
-  useEffect(()=>{
-    getAllCommand()
-  }, [])
     return(
         <Wrapper>
             <Command commandProps={props}/>

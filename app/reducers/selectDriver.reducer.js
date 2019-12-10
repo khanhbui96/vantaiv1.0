@@ -11,6 +11,7 @@ const initialState = {
         end: "",
         salary: "",
         salaryReceive: '',
+        academic: '',
         rank: "",
         position:"",
         unit: "",

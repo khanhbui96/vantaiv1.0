@@ -229,7 +229,7 @@ export default function SelectCar(props) {
               {activeStep !== steps.length &&
                 (completed.has(activeStep) ? (
                   <Typography variant="caption" className={classes.completed}>
-                    Step {activeStep + 1} already completed
+                    Bước  {activeStep + 1} đã hoàn thành xong
                   </Typography>
                 ) : (
                   <Button variant="contained" color="primary" onClick={handleComplete}>

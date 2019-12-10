@@ -6,7 +6,8 @@ import {getErrs} from '../actions/erros.actions'
 
 const mapStateToProps = state=>{
   return {
-    errs: state.errs
+    errs: state.errs,
+    user: state.user
   }
 }
 export default connect(

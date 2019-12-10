@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const Verify = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const {vehicles, selectVehicle, updateData, updateVehicle, commands} = props.vehicleProps;
+  const {vehicles, selectVehicle, updateData, updateVehicle, commands, getAllCommand} = props.vehicleProps;
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -35,12 +35,13 @@ const Verify = props => {
           vehicles={vehicles} 
           setValue={setValue} 
           selectVehicle={selectVehicle}
-          commands={commands.data}
+          commands={commands}
+          getAllCommand={getAllCommand}
           />
           </div>}
         {value === 1 && <div className={classes.page}>
           <InforVerify
-            vehicles={vehicles.data}
+            vehicles={vehicles}
             selectVehicle={selectVehicle}
             updateVehicle={updateVehicle}
             updateData={updateData} 

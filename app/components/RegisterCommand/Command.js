@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 const Command = props => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const {addCommand, commands, selectCommand, chooseCommand} = props.commandProps;
+  const {addCommand, commands, selectCommand, chooseCommand, getAllCommand} = props.commandProps;
   function handleChange(event, newValue) {
     setValue(newValue);
   }
@@ -39,6 +39,7 @@ const Command = props => {
         {value === 1 && <div className={classes.page}>
           <AllCommand 
             commands = {commands}
+            getAllCommand = {getAllCommand}
             selectCommand={selectCommand}
             setValue={setValue}
             />

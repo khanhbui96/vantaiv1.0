@@ -30,7 +30,7 @@ const Level = props => {
             </Tabs>
         </AppBar>
         {value === 0 && <div className={classes.page}><AllLevel drivers={drivers}/></div>}
-        {value === 1 && <div className={classes.page}><FilterLevel  drivers={drivers.data}/></div>}
+        {value === 1 && <div className={classes.page}><FilterLevel  drivers={drivers}/></div>}
         </div>
   );
 }

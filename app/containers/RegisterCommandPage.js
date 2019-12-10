@@ -11,10 +11,6 @@ const mapStateToProps = state=>{
   }
 }
 const RegisterCommandPage = (props)=>{
-  const {getAllCommand, commands} = props;
-  useEffect(()=>{
-    getAllCommand()
-  }, [])
     return(
         <Wrapper>
             <Command commandProps={props}/>

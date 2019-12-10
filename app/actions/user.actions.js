@@ -2,6 +2,7 @@ import callApi from '../utils/callApi';
 import { GET_ERRS, GET_CURRENT_USER } from '../constants/actions';
 import {getErrs} from './erros.actions'
 import setAuthHeader from '../utils/setAuthHeader';
+import loading from './loading.action';
 
 export const getCurrentUser = () => async dispatch => {
     try{
@@ -12,11 +13,16 @@ export const getCurrentUser = () => async dispatch => {
     }
    
 }
-export const loginUser = (data, func) => async dispatch=>{    
+export const loginUser = (data, func1) => async dispatch=>{    
     try{
+        await dispatch(loading());
         const User = await callApi('post', '/users/login', data);
+        await dispatch({
+            type: GET_CURRENT_USER,
+            payload: User.data
+        })
         await localStorage.setItem('jwt', User.data.token);
-        await func(User.data.type);
+        await func1(User.data.type);
     }catch(err){
         await dispatch(getErrs(err.response.data))
     }

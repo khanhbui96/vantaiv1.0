@@ -41,7 +41,7 @@ const commands = (state = initialState, action) => {
       };
     case UPDATE_COMMAND:
       return {
-        isUpdate: true,
+        isUpdate: false,
         data: [
           ...state.data.map(command => {
             if (command._id == action.payload.id) {

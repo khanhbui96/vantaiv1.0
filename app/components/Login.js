@@ -7,9 +7,8 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
-import callApi from '../utils/callApi';
-import setAuthHeader from '../utils/setAuthHeader';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Login(props) {
-  const { errs, loginUser, history, getErrs } = props;
+  const { errs, loginUser, history, getErrs, user } = props;
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -35,6 +34,15 @@ function Login(props) {
     }
   });
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,6 +51,7 @@ function Login(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleClick = async e => {
     e.preventDefault();
     loginUser({ ...state }, type => {
@@ -52,6 +61,7 @@ function Login(props) {
         history.push('/host');
       }
     });
+    
   };
   const handleOnChange = e => {
     setState({
@@ -71,10 +81,10 @@ function Login(props) {
           ...errs
         }
       });
-    };
-    if(!navigator.onLine){
-        setOpen(true);
-       } 
+    }
+    if (!navigator.onLine) {
+      setOpen(true);
+    }
   }, [errs]);
   return (
     <div
@@ -121,7 +131,7 @@ function Login(props) {
             Đăng nhập
           </Button>
           <Typography style={{ marginTop: 8 }}>
-            (Nếu chưa có tài khoản nhấn {' '}
+            (Nếu chưa có tài khoản nhấn{' '}
             <Link
               to="/register"
               style={{ color: 'blue' }}
@@ -149,6 +159,23 @@ function Login(props) {
               Đã rõ
             </Button>
           </DialogActions>
+        </Dialog>
+        <Dialog
+          open={ false}
+          onClose={handleClose2}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+         
+        >
+          
+              <div  style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+              <DialogActions>
+          <CircularProgress />
+          </DialogActions>
+          <DialogTitle id="alert-dialog-title" style={{ textAlign: 'center' }}>
+            {'Đang đăng nhập. Xin chờ!'}
+          </DialogTitle>
+              </div>
         </Dialog>
       </Paper>
     </div>

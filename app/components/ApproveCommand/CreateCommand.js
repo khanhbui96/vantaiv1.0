@@ -12,6 +12,8 @@ import FileBase64 from 'react-file-base64';
 import moment from 'moment';
 import jwt_decode from 'jwt-decode'
 import renderToDocx from '../../utils/renderToDocx'
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
 
 
 const useStyles = makeStyles(theme => {});
@@ -61,13 +63,16 @@ const CreateCommand = (props) => {
   },[])
   return (
     <React.Fragment>
+      
       <form
         encType="multipart/form-data"
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          boxSizing: "border-box",
+          padding: 20
         }}
       >
         <Typography align="center" variant="h5" style={{margin: 10}} >LỆNH ĐIỀU PHƯƠNG TIỆN</Typography>

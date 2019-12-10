@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -24,6 +25,7 @@ import {
   DirectionsCar
 } from '@material-ui/icons';
 import { Link, withRouter } from 'react-router-dom';
+import {getErrs} from '../actions/erros.actions'
 
 const drawerWidth = 340;
 
@@ -88,11 +90,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Wrapper({ history, children }) {
+function Wrapper({ history, children, getErrs, user }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [topic, changeTopic] = React.useState('Phần mềm quản lí vận tải');
+  const [topic, changeTopic] = React.useState('Phần mềm quản lí - hiệp đồng vận tải');
   function handleDrawerOpen() {
     setOpen(true);
   }
@@ -126,16 +128,22 @@ function Wrapper({ history, children }) {
             {topic}
           </Typography>
           <div style={{ position: 'absolute', right: 20, top: 10 }}>
+          <div>
+          <Typography variant="h6" noWrap style={{float: 'left', marginTop: 7}}>
+            <div>Chào! {' '}{user.name}</div>
+          </Typography>
             <IconButton
               color="inherit"
               title="Đăng xuất"
               onClick={() => {
                 localStorage.removeItem('jwt');
+                getErrs({});
                 history.push('/');
               }}
             >
               <ExitToAppIcon />
             </IconButton>
+          </div>
           </div>
         </Toolbar>
       </AppBar>
@@ -238,4 +246,14 @@ function Wrapper({ history, children }) {
     </div>
   );
 }
-export default withRouter(Wrapper);
+const mapPropsToState = (state)=>{
+  return ({
+    user: state.user
+  })
+}
+export default connect(
+  mapPropsToState ,
+  {
+    getErrs
+  }
+)(withRouter(Wrapper));
